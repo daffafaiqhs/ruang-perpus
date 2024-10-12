@@ -54,7 +54,8 @@ const pageAddBookMainContent = `<h2 class="text-2xl font-bold mb-4">Tambah Buku<
 async function handleClickEditButton(bookId) {
   try {
     // Ambil data buku dari server berdasarkan id, simpan hasilnya ke variabel currentBook
-    // TODO: answer here
+    const response = await fetch(`http://localhost:3333/books/${bookId}`);
+    currentBook = await response.json();
 
     currentPage = 'edit';
     loadPage();
@@ -238,7 +239,9 @@ async function loadPage() {
         panggil function generateEditFormInput dan simpan hasilnya ke variabel formInput
         kemudian isi innerHTML dari form dengan formInput
       */
-      // TODO: answer here
+      const formInput = generateEditFormInput();
+      form.innerHTML = formInput;
+
       break;
     case 'add':
       main.innerHTML = pageAddBookMainContent;
