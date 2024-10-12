@@ -66,14 +66,13 @@ async function handleClickEditButton(bookId) {
 }
 async function handleClickDeleteButton(bookId) {
   try {
-    // const confirmation = confirm('Apakah anda yakin ingin menghapus buku ini?');
-    // if (!confirmation) {
-    //   return;
-    // }
+    const confirmation = confirm('Apakah anda yakin ingin menghapus buku ini?');
+    if (!confirmation) {
+      return;
+    }
 
     //panggil function deleteBook dengan parameter bookId
-    // TODO: answer here
-    loadPage();
+    deleteBook(bookId).then(() => loadPage());
   } catch (error) {
     console.log(error);
     console.log('Terjadi kesalahan saat menghapus buku');
@@ -131,6 +130,7 @@ async function handleAddForm(event) {
         quantity: 10,
       }
     */
+
     const book = {
       title: event.target[0].value,
       author: event.target[1].value,
@@ -234,8 +234,6 @@ async function loadPage() {
       */
 
       fetchBooks().then(() => {
-        console.log(books);
-        
         const rows = generateRows(books);
         const tableBody = document.querySelector('tbody');
         tableBody.innerHTML = rows;
@@ -321,7 +319,9 @@ async function deleteBook(bookId) {
       hapus buku yang ada di http://localhost:3333/books/:id dengan method DELETE
       id buku yang akan dihapus dikirimkan sebagai parameter function
     */
-    // TODO: answer here
+    await fetch(`http://localhost:3333/books/${bookId}`, {
+      method: "DELETE"
+    })
   } catch (error) {
     console.log(error);
     console.log('Terjadi kesalahan saat menghapus buku');
