@@ -149,9 +149,12 @@ async function handleAddForm(event) {
   }
 }
 
+const addButton = document.querySelector("a");
+addButton.addEventListener("click", () => handleClickAddNav());
+
 function handleClickAddNav() {
   // ubah currentPage menjadi 'add'
-  // TODO: answer here
+  currentPage = 'add';
   loadPage();
 }
 
