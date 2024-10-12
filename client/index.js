@@ -161,7 +161,7 @@ function handleClickAddNav() {
 // add event listener click tag a didalam li dengan function handleClickAddNav
 const navLinks = document.querySelectorAll('li a');
 navLinks.forEach((navLink) => {
-  // TODO: answer here
+  navLink.addEventListener("click", () => handleClickAddNav());
 });
 
 function generateRows(books) {
