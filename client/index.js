@@ -119,7 +119,7 @@ async function handleEditForm(event) {
 async function handleAddForm(event) {
   try {
     // gunakan preventDefault untuk mencegah browser melakukan reload halaman
-    // TODO: answer here
+    event.preventDefault();
 
     /*
       Ambil data dari form, simpan ke dalam variabel book
@@ -131,13 +131,18 @@ async function handleAddForm(event) {
         quantity: 10,
       }
     */
-    // TODO: answer here
+    const book = {
+      title: event.target[0].value,
+      author: event.target[1].value,
+      year: event.target[2].value,
+      quantity: event.target[3].value
+    }
 
     // panggil function addBook dengan parameter book
-    // TODO: answer here
-
-    currentPage = 'home';
-    loadPage();
+    addBook(book).then(() => {
+      currentPage = 'home';
+      loadPage();
+    })
   } catch (error) {
     console.log(error);
     console.log('Terjadi kesalahan saat menambah buku');
@@ -213,7 +218,7 @@ function generateEditFormInput() {
   <input required type="number" id="quantity" name="quantity" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" value="${currentBook?.quantity}">
 </div>
 <div class="flex justify-center">
-  <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" value="simpan" />
+  <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" value="Simpan" />
 </div>`;
 }
 
@@ -275,7 +280,13 @@ async function addBook(book) {
       tambahkan buku baru ke http://localhost:3333/books dengan method POST
       body yang dikirim adalah book yang dikirimkan sebagai parameter function
     */
-    // TODO: answer here
+    await fetch("http://localhost:3333/books", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(book)
+    })
   } catch (error) {
     console.log(error);
     console.log('Terjadi kesalahan saat menambah buku');
