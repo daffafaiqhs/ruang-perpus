@@ -1,11 +1,11 @@
 {
   "books": [
     {
-      "id": 1,
-      "title": "Laskar Pelangi",
+      "title": "Laskar Pelangi edited",
       "author": "Andrea Hirata",
-      "year": 2005,
-      "quantity": 3
+      "year": "2005",
+      "quantity": "3",
+      "id": 1
     },
     {
       "id": 2,
@@ -104,6 +104,13 @@
       "author": "Eka Kurniawan",
       "year": 2004,
       "quantity": 3
+    },
+    {
+      "title": "buku",
+      "author": "saya",
+      "year": "2024",
+      "quantity": "100",
+      "id": 16
     }
   ]
 }
