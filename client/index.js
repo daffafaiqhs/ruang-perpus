@@ -83,7 +83,7 @@ async function handleClickDeleteButton(bookId) {
 async function handleEditForm(event) {
   try {
     // gunakan preventDefault untuk mencegah browser melakukan reload halaman
-    // TODO: answer here
+    event.preventDefault();
 
     /* 
       Ambil data dari form, simpan ke dalam variabel book
@@ -95,15 +95,21 @@ async function handleEditForm(event) {
         quantity: 10,
       }
     */
-    // TODO: answer here
+    
+    const book = {
+      title: event.target[0].value,
+      author: event.target[1].value,
+      year: event.target[2].value,
+      quantity: event.target[3].value
+    }
 
     // panggil function editBook dengan parameter book
-    // TODO: answer here
-
-    currentBook = null;
-
-    currentPage = 'home';
-    loadPage();
+    editBook(book).then(() => {
+      currentBook = null;
+  
+      currentPage = 'home';
+      loadPage();
+    });
   } catch (error) {
     console.log(error);
     console.log('Terjadi kesalahan saat mengubah buku');
@@ -282,7 +288,13 @@ async function editBook(book) {
       ubah buku yang ada di http://localhost:3333/books/:id dengan method PUT
       body yang dikirim adalah book yang dikirimkan sebagai parameter function
     */
-    // TODO: answer here
+    await fetch(`http://localhost:3333/books/${currentBook.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(book)
+    })
   } catch (error) {
     console.log(error);
     console.log('Terjadi kesalahan saat mengubah buku');

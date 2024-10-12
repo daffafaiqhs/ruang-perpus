@@ -1,11 +1,11 @@
 {
   "books": [
     {
-      "id": 1,
-      "title": "Laskar Pelangi",
+      "title": "Laskar Pelangi edited",
       "author": "Andrea Hirata",
-      "year": 2005,
-      "quantity": 3
+      "year": "2005",
+      "quantity": "3",
+      "id": 1
     },
     {
       "id": 2,
