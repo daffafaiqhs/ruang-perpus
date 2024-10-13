@@ -1,3 +1,2 @@
-[[redirects]]
-  from = "/"
-  to = "/client"
+from = "https://clinquant-bienenstitch-20ad5e.netlify.app/"
+to = "https://clinquant-bienenstitch-20ad5e.netlify.app/client"
